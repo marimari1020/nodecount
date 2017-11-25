@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+<script type="text/javascript">
+function countTags(n){     //nはNodeを示す.
+	var numtags = 0;
+	if (n.nodeType == 1)   //n がElementかどうかチェック
+		numtags++;　　//Elementならカウントをアップ
+	var children = n.childNodes;　　　//　ｎのすべての子ノードを取得
+	for(var i =0; i < children.length; i++) { 　//　子ノード内n がElementかどうかチェック
+		numtags += countTags(children[i]);
+	}
+	return numtags;
+}
+</script>
+</head>
+
+<body onload="alert('このドキュメントは、' + countTags(document) + 'のElementノードを含みます')">
+
+<div>テスト用</div>
+
+</body>
+</html>
